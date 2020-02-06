@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "34659533655",
+    "firebase_url": "https://beta-cd9cd.firebaseio.com",
+    "project_id": "beta-cd9cd",
+    "storage_bucket": "beta-cd9cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34659533655:android:0089206dce3d26368cf412",
+        "android_client_info": {
+          "package_name": "com.prologic.firebaselearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34659533655-5hk2s3um0ugespq4a20i18fp5gh66315.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6_x4cH83KPSo6rG3UabwIr9VtV1DVyyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34659533655-5hk2s3um0ugespq4a20i18fp5gh66315.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
