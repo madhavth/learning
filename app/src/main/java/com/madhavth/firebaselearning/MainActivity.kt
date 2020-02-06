@@ -8,6 +8,9 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.scene_one.myImageView
+import kotlinx.android.synthetic.main.scene_one.view.*
+import kotlinx.android.synthetic.main.scene_one.view.myImageView
+import kotlinx.android.synthetic.main.scene_two.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -96,10 +99,15 @@ class MainActivity : AppCompatActivity() {
         val sceneOne:Scene = Scene.getSceneForLayout(rootScene, R.layout.scene_one, this)
         val sceneTwo:Scene = Scene.getSceneForLayout(rootScene, R.layout.scene_two, this)
 
+
         if(isAScene)
+        {
             TransitionManager.go(sceneTwo, transitionManager)
+        }
         else
+        {
             TransitionManager.go(sceneOne, transitionManager)
+        }
 
 
         isAScene = !isAScene
