@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- res/transition/change_image_transform.xml -->
-<!-- (see also Shared Transitions below) -->
-<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
-    <changeImageTransform/>
+<transitionSet android:transitionOrdering="sequential"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <changeBounds
+        android:interpolator="@android:interpolator/overshoot"
+        android:duration="1000"
+        >
+
+        <targets>
+            <target android:targetId="@+id/tvTesting"/>
+            <target android:targetId="@+id/ivTesting"/>
+            <target android:targetId="@+id/btnTesting"/>
+        </targets>
+
+    </changeBounds>
+
+
 </transitionSet>

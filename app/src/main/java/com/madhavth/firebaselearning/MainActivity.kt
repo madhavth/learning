@@ -1,30 +1,46 @@
 package com.madhavth.firebaselearning
 
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.transition.*
-import android.view.Window
+import android.transition.Scene
+import android.transition.Transition
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.madhavth.firebaselearning.service.TestApi
+import com.madhavth.firebaselearning.service.TestEntity
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.scene_one.myImageView
-import kotlinx.android.synthetic.main.scene_one.view.*
-import kotlinx.android.synthetic.main.scene_one.view.myImageView
-import kotlinx.android.synthetic.main.scene_two.view.*
+import kotlinx.android.synthetic.main.scene_one.*
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
-
     var animating= true
     private lateinit var transitionManager: Transition
     var isAScene = true
     var scaled = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        getData()
 
 
+        testingAPI()
         title= "Animation Testing"
         btnTest1.setOnClickListener {
             crossFade()
@@ -109,9 +125,96 @@ class MainActivity : AppCompatActivity() {
             TransitionManager.go(sceneOne, transitionManager)
         }
 
-
         isAScene = !isAScene
     }
 
 
+
+
+    private fun testingAPI()
+    {
+        val myList = arrayListOf(
+            TestEntity(id=1,username = "asd",name = "asd"),
+            TestEntity(id=112,username = "asd",name = "asd"),
+            TestEntity(id=23,username = "asd",name = "asd")
+        )
+        val observable = Observable.fromIterable(myList)
+
+
+        val observer = object: Observer<TestEntity>
+        {
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: TestEntity) {
+//             Toast.makeText(applicationContext
+//             , "$t received",
+//             Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(e: Throwable) {
+//                Toast.makeText(applicationContext
+//                , "error occurred",
+//                Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        observable
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(observer)
+
+
+        fetchDataFromAPI()
+    }
+
+    @SuppressLint("CheckResult")
+    fun fetchDataFromAPI()
+    {
+        val myData = TestApi.RETROFIT_SERVICE.getUsers()
+
+        myData
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe{
+                myList ->
+                    setList(myList)
+            }
+    }
+
+
+    fun setList(myList: List<TestEntity>)
+    {
+        Toast.makeText(applicationContext
+        , "myList is $myList",
+        Toast.LENGTH_SHORT).show()
+    }
+
+
+
+
+//    fun getData(): Observer<List<TestEntity>>
+//    {
+//        val myDisposable = CompositeDisposable()
+//
+//        myDisposable.add(TestApi.RETROFIT_SERVICE.getUsers()
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeOn(Schedulers.io())
+//            .subscribe(this::handleResposne)
+//        )
+//        myDisposable.clear()
+//    }
+//
+//
+//    fun handleResposne(list: List<TestEntity>)
+//    {
+//        Log.d("MainActivity", list.toString())
+//        tvFetchedData.text = list.toString()
+//    }
+
 }
+

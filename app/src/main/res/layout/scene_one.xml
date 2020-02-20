@@ -11,5 +11,12 @@
         android:layout_height="50dp"
         android:src="@color/colorPrimaryDark"
         />
+    <Button
+        android:id="@+id/btnSomething"
+        android:text="transforming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
 
 </LinearLayout>

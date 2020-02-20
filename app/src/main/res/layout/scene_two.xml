@@ -2,11 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:id="@+id/transitionScene"
-    android:gravity="end"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <Button
+        android:id="@+id/btnSomething"
+        android:layout_marginEnd="50dp"
+        android:text="Transformed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
     <ImageView
+        android:layout_gravity="end"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:id="@+id/myImageView"
