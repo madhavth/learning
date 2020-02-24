@@ -37,6 +37,19 @@
             android:text="Test 3"
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnStart"
+            android:text="Service Start"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnStop"
+            android:text="Service Stop"
+            />
 
         <TextView
             android:id="@+id/tvFetchedData"

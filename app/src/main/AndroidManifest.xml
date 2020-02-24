@@ -14,14 +14,19 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.madhavth.firebaselearning.SecondActivity">
+        </activity>
+        <activity android:name="com.madhavth.firebaselearning.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.madhavth.firebaselearning.MainActivity">
-        </activity>
+
+        <service android:name=".service.MyService"
+        android:icon="@android:color/background_dark"
+            android:label="myService"
+            />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"

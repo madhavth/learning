@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.madhavth.firebaselearning.service.MyService
 import com.madhavth.firebaselearning.service.TestApi
 import com.madhavth.firebaselearning.service.TestEntity
 import io.reactivex.Observable
@@ -26,8 +27,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.scene_one.*
 import kotlin.random.Random
 
-
 class MainActivity : AppCompatActivity() {
+
     var animating= true
     private lateinit var transitionManager: Transition
     var isAScene = true
@@ -57,6 +58,20 @@ class MainActivity : AppCompatActivity() {
 
         transitionManager = TransitionInflater.from(this)
             .inflateTransition(R.transition.new_transition)
+
+
+        btnStart.setOnClickListener {
+            val intent = Intent(this, MyService::class.java)
+            intent.putExtra("KEY1","use this value in the service")
+            startService(intent)
+        }
+
+
+        btnStop.setOnClickListener {
+            val intent = Intent(this, MyService::class.java)
+            stopService(intent)
+
+        }
     }
 
 
