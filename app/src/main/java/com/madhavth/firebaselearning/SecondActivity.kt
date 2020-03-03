@@ -1,6 +1,7 @@
 package com.madhavth.firebaselearning
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.madhavth.firebaselearning.Widgets.BUTTON_ACTION
 import com.madhavth.firebaselearning.databinding.ActivitySecondBinding
 import com.madhavth.firebaselearning.service.TestApi
 import com.madhavth.firebaselearning.service.TestEntity
@@ -30,8 +33,6 @@ import kotlinx.android.synthetic.main.test_layout_1.view.btnTesting
 import kotlinx.android.synthetic.main.test_layout_2.*
 import kotlinx.android.synthetic.main.test_layout_2.view.*
 import kotlinx.coroutines.delay
-import leakcanary.AppWatcher
-import leakcanary.ObjectWatcher
 import java.util.concurrent.TimeUnit
 
 class SecondActivity : AppCompatActivity() {
@@ -56,6 +57,11 @@ class SecondActivity : AppCompatActivity() {
             changeLayout()
         }
 
+        testButton2.setOnClickListener {
+            val intent = Intent()
+            intent.action = BUTTON_ACTION
+            sendBroadcast(intent)
+        }
 
 
         observeThis()
@@ -65,7 +71,7 @@ class SecondActivity : AppCompatActivity() {
 
     var toggle = true
 
-    fun changeLayout()
+    private fun changeLayout()
     {
         val transition: Transition = TransitionInflater.from(this).inflateTransition(R.transition.change_image_transform)
         val firstScene = Scene.getSceneForLayout(changing_layout,
@@ -124,13 +130,6 @@ class SecondActivity : AppCompatActivity() {
         viewModel.merge.observe(this, Observer{
             viewModel.increase()
         })
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        AppWatcher.objectWatcher.watch(this,
-            "SecondActivity received Service#onDestroy() callback")
 
     }
 }

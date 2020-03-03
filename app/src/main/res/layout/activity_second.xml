@@ -27,7 +27,12 @@
             android:id="@+id/testButton1"
             android:transitionName="test1"
             android:layout_width="wrap_content"
-            android:text="IT IS WHAT IT IS"
+            android:text="IT IS NOT WHAT IT IS"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/testButton2"
+            android:layout_width="wrap_content"
+            android:text="mr robot"
             android:layout_height="wrap_content" />
 
         <LinearLayout
@@ -36,5 +41,10 @@
             android:layout_height="200dp">
         <include layout="@layout/test_layout_1"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </layout>

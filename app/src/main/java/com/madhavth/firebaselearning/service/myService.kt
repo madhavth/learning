@@ -48,19 +48,21 @@ class MyService: Service()
 
         doBackGroundTask()
 
-        return START_NOT_STICKY
+        return START_REDELIVER_INTENT
     }
 
 
-    val job = Job()
-    val coroutineScope = CoroutineScope(Dispatchers.Default + job)
+    private val job = Job()
+    private val coroutineScope = CoroutineScope(Dispatchers.Default + job)
 
     private fun doBackGroundTask() {
 
         coroutineScope.launch {
             for(i in 1..9)
             {
-                delay(3000)
+                val seconds = 15
+                val time =(seconds * 1000).toLong()
+                delay(time)
                 notification("i am work $i")
             }
         }

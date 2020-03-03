@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.madhavth.firebaselearning">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +15,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.madhavth.firebaselearning.SecondActivity">
-        </activity>
-        <activity android:name="com.madhavth.firebaselearning.MainActivity">
+        <receiver android:name=".NewAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="action_MY_NEW_ACTION"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/new_app_widget_info" />
+        </receiver>
+
+        <activity android:name=".Widgets.WidgetConfigure" />
+
+        <receiver android:name=".Widgets.WeatherWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="action_WEATHER_FETCH" />
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_widget_info" />
+        </receiver>
+        <receiver android:name=".Widgets.TestWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="something_new_or_whatever" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/my_new_widget_test" />
+        </receiver>
+        <receiver android:name=".MyBroadReceiver">
+            <intent-filter>
+                <action android:name="something_new_or_whatever" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".SecondActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,14 +70,26 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.MyService"
-        android:icon="@android:color/background_dark"
-            android:label="myService"
-            />
+        <service
+            android:name=".service.MyService"
+            android:icon="@android:color/background_dark"
+            android:label="myService" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
+
+        <receiver android:name=".Widgets.MyWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+                <action android:name="old_Action_also_works" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/example_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

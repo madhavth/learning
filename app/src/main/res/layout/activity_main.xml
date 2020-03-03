@@ -4,69 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:orientation="vertical"
     android:weightSum="10"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_weight="6"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnTest1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Test 1"
-            android:transitionName="test1"
-            />
+            android:transitionName="test1" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnTest2"
-            android:text="Test 2"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Test 2" />
+
+        <Button
             android:id="@+id/btnTest3"
-            android:text="Test 3"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Test 3" />
+
+        <Button
             android:id="@+id/btnStart"
-            android:text="Service Start"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Service Start" />
+
+        <Button
             android:id="@+id/btnStop"
-            android:text="Service Stop"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service Stop" />
+
+        <Button
+            android:id="@+id/btnGetWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Weather" />
 
         <TextView
             android:id="@+id/tvFetchedData"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
     </LinearLayout>
 
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/rootScene"
-        android:layout_weight="4"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
 
-        <include layout="@layout/scene_one"/>
-    </FrameLayout>
+        <include layout="@layout/scene_one" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnIncreaseCV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="increase" />
+
+            <Button
+                android:id="@+id/btnDecreaseCV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="decrease" />
+
+            <Button
+                android:id="@+id/btnColorCV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="color" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvWeatherReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            >
+
+            <com.madhavth.firebaselearning.MyCustomView
+                android:id="@+id/myCustomView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:customSetting="option1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:myColor="@color/colorPrimary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
