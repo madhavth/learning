@@ -8,4 +8,11 @@
             <enum name="option3" value="3"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="SliderView">
+    </declare-styleable>
+
+    <declare-styleable name="LockScreenSliderView">
+
+    </declare-styleable>
 </resources>
