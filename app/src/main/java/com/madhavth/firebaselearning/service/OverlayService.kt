@@ -4,23 +4,34 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.graphics.Path
 import android.graphics.PixelFormat
 import android.os.Build
 import android.os.IBinder
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.widget.FrameLayout
 import android.widget.RemoteViews
 import android.widget.Toast
 import com.madhavth.firebaselearning.CanvasActivity
 import com.madhavth.firebaselearning.R
 import com.madhavth.firebaselearning.Widgets.ACTION_STOP_VIEW
 import kotlinx.android.synthetic.main.activity_canvas.view.*
+import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
+import kotlin.math.abs
 import kotlin.math.min
 
 
 class OverlayService: Service() {
     var minimized: Boolean = false
+    var mx: Float = 0f
+    var my: Float = 0f
+    var mx2: Float = 0f
+    var my2: Float = 0f
+
 
     override fun onCreate() {
         super.onCreate()
@@ -68,6 +79,40 @@ class OverlayService: Service() {
             }
             minimized = !minimized
         }
+
+        overlay.btnMoveMe.setOnTouchListener(View.OnTouchListener{
+         v,event ->
+            Timber.tag("ConstantLog").d("ACTION ${event.action}")
+            if(event.action == MotionEvent.ACTION_MOVE)
+            {
+                val dx = abs(mx - event.x)
+                val dy = abs(my - event.y)
+
+                if(dx >= 8f || dy >= 8f)
+                {
+                    Timber.tag("ConstantLog").d("moved to ${event.x}, ${event.y}")
+                    overlay.btnMoveMe.x += event.x
+                    overlay.btnMoveMe.y += event.y
+                    Timber.tag("ConstantLog").d("btnMoveMe to ${overlay.btnMoveMe.x}, ${overlay.btnMoveMe.y}")
+                }
+
+                return@OnTouchListener true
+            }
+
+            if(event.action == MotionEvent.ACTION_DOWN)
+            {
+                mx = event.x
+                my = event.y
+            }
+
+            if(event.action == MotionEvent.ACTION_UP)
+            {
+             val sth =4
+            }
+
+            false
+        })
+
 
         windowManager.addView(overlay, params)
     }

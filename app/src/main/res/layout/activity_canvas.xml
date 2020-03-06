@@ -47,4 +47,14 @@
         android:src="@drawable/ic_save_black_24dp"
         />
 
+    <Button
+        android:text="MoveMe"
+        android:id="@+id/btnMoveMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ic_save_black_24dp"
+        />
+
 </FrameLayout>
