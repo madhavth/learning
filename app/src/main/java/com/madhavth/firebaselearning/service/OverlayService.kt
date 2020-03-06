@@ -16,9 +16,11 @@ import com.madhavth.firebaselearning.CanvasActivity
 import com.madhavth.firebaselearning.R
 import com.madhavth.firebaselearning.Widgets.ACTION_STOP_VIEW
 import kotlinx.android.synthetic.main.activity_canvas.view.*
+import kotlin.math.min
 
 
 class OverlayService: Service() {
+    var minimized: Boolean = false
 
     override fun onCreate() {
         super.onCreate()
@@ -33,16 +35,12 @@ class OverlayService: Service() {
             overlay.myCanvas.clearBitmap()
         }
 
-        overlay.btnSearch.text = "hide"
+        overlay.btnSearch.text = "close"
         overlay.btnSearch.setOnClickListener {
             windowManager.removeView(overlay)
             stopSelf()
         }
 
-        overlay.btnSave.text = "minimize"
-        overlay.btnSave.setOnClickListener {
-
-        }
 
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
@@ -51,6 +49,26 @@ class OverlayService: Service() {
             0,
             PixelFormat.TRANSLUCENT
         )
+
+        overlay.btnSave.text = "minimize"
+        overlay.btnSave.setOnClickListener {
+            if(!minimized)
+            {
+                params.height = 200
+                params.width  = 200
+                windowManager.updateViewLayout(overlay, params)
+                overlay.btnSave.text= "maximize"
+            }
+            else
+            {
+                params.height = WindowManager.LayoutParams.WRAP_CONTENT
+                params.width = WindowManager.LayoutParams.WRAP_CONTENT
+                windowManager.updateViewLayout(overlay, params)
+                overlay.btnSave.text ="minimize"
+            }
+            minimized = !minimized
+        }
+
         windowManager.addView(overlay, params)
     }
 
