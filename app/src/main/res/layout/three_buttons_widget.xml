@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin">
+
+    <Button
+        android:id="@+id/btnTestWidget1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="test 1" />
+
+    <Button
+        android:id="@+id/btnTestWidget2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_toRightOf="@+id/btnTestWidget1"
+        android:text="stop overlay" />
+
+    <Button
+        android:id="@+id/btnTestWidget3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btnTestWidget2"
+        android:text="start overlay" />
+
+</RelativeLayout>

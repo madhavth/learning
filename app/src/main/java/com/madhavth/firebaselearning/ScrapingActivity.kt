@@ -18,6 +18,7 @@ import com.google.android.gms.location.LocationResult
 import com.madhavth.firebaselearning.Widgets.ACTION_STOP_VIEW
 import com.madhavth.firebaselearning.Widgets.DRAW_OVER_OTHER_APPS
 import com.madhavth.firebaselearning.Widgets.JSOUP_ADDRESS
+import com.madhavth.firebaselearning.service.FloatingOverlayService
 import com.madhavth.firebaselearning.service.MyJobIntentService
 import com.madhavth.firebaselearning.service.OverlayService
 import kotlinx.android.synthetic.main.activity_gestures.*
@@ -67,7 +68,16 @@ class ScrapingActivity : AppCompatActivity() {
         }
 
         btnService2.setOnClickListener {
-
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            if(Settings.canDrawOverlays(this))
+            {
+                Toast.makeText(applicationContext
+                , "trying to draw floating overlay",
+                Toast.LENGTH_SHORT).show()
+                val intent= Intent(this, FloatingOverlayService::class.java)
+                stopService(intent)
+                startService(intent)
+            }
         }
     }
 

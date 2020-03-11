@@ -7,6 +7,10 @@ val BUTTON_ACTION = "something_new_or_whatever"
 val BUTTON_OLD_ACTION = "old_Action_also_works"
 val ACTION_UPDATE_WEATHER = "action_WEATHER_FETCH"
 
+val BUTTON1_INTENT = "BUTTON_CLICK_1"
+val BUTTON2_INTENT = "BUTTON_CLICK_2"
+val BUTTON3_INTENT = "BUTTON_CLICK_3"
+
 val ACTION_STOP_VIEW = "action.STOP_VIEW"
 
 val BITMAP_IMAGE_NAME = "myBitMap.png"

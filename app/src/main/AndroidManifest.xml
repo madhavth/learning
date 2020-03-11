@@ -10,9 +10,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
@@ -25,6 +25,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <receiver android:name="com.prologic.firebaselearning.ThreeButtonsWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="BUTTON_CLICK_1" />
+                <action android:name="BUTTON_CLICK_2" />
+                <action android:name="BUTTON_CLICK_3" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/three_buttons_widget_info" />
+        </receiver>
+
         <activity android:name=".ScrapingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +45,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GesturesActivity">
-        </activity>
+        <activity android:name=".GesturesActivity"></activity>
         <activity android:name=".ImageSearchResultActivity" />
-        <activity android:name=".CanvasActivity"></activity>
+        <activity android:name=".CanvasActivity" />
         <activity android:name=".TicTacActivity" />
 
         <receiver android:name=".NewAppWidget">
@@ -89,15 +101,12 @@
             android:name=".service.MyService"
             android:icon="@android:color/background_dark"
             android:label="myService" />
-
-
         <service
             android:name=".service.MyJobIntentService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
             android:exported="true"
-            />
-
-        <service android:name=".service.OverlayService"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name=".service.OverlayService" />
+        <service android:name=".service.FloatingOverlayService" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
