@@ -28,4 +28,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnService"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.madhavth.firebaselearning.CustomViewGroups.MyCustomViewGroup
+        android:id="@+id/myCustomViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/box_background"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnService"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/customText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="my Text 1" />
+
+        <TextView
+            android:id="@+id/customText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="my Text 2" />
+
+    </com.madhavth.firebaselearning.CustomViewGroups.MyCustomViewGroup>
+
+
+    <ImageView
+        android:id="@+id/imgScaleGesture"
+        android:src="@drawable/background"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myCustomViewGroup" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

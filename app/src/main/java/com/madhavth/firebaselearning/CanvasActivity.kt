@@ -10,14 +10,9 @@ import android.os.Environment
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.storage.FirebaseStorage
-import com.madhavth.firebaselearning.CustomViews.MyCanvasView
 import com.madhavth.firebaselearning.Widgets.BITMAP_IMAGE_NAME
 import com.madhavth.firebaselearning.Widgets.INTENT_EXTRA_IMAGE
 import kotlinx.android.synthetic.main.activity_canvas.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.File
 
@@ -32,7 +27,7 @@ class CanvasActivity : AppCompatActivity() {
             myCanvas.clearBitmap()
         }
 
-        btnSave.setOnClickListener {
+        btnMinimize.setOnClickListener {
             myCanvas.saveBitmap()
             val path = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             val file = File(path, BITMAP_IMAGE_NAME)
@@ -53,7 +48,7 @@ class CanvasActivity : AppCompatActivity() {
             }
         }
 
-        btnSearch.setOnClickListener {
+        btnClose.setOnClickListener {
             //show loading or something here
             uploadImage()
         }

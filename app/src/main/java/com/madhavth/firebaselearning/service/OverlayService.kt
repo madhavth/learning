@@ -6,22 +6,14 @@ import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Build
 import android.os.IBinder
-import android.util.DisplayMetrics
 import android.view.*
-import android.widget.FrameLayout
-import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import com.madhavth.firebaselearning.CanvasActivity
 import com.madhavth.firebaselearning.R
-import com.madhavth.firebaselearning.ScrapingActivity
 import com.madhavth.firebaselearning.Widgets.ACTION_STOP_VIEW
 import kotlinx.android.synthetic.main.activity_canvas.view.*
-import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
-import java.util.*
 import kotlin.math.abs
-import kotlin.math.min
 
 
 class OverlayService: Service() {
@@ -55,10 +47,9 @@ class OverlayService: Service() {
         val pxHeight = displayMetrics.heightPixels
         val pxWidth = displayMetrics.widthPixels
 
-
         val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val overlay = layoutInflater.inflate(R.layout.activity_canvas,null)
+        val overlay = layoutInflater.inflate(R.layout.activity_canvas2,null)
 
 
         overlay.txtView.textSize = 50f
@@ -73,8 +64,8 @@ class OverlayService: Service() {
             overlay.myCanvas.clearBitmap()
         }
 
-        overlay.btnSearch.text = "close"
-        overlay.btnSearch.setOnClickListener {
+        overlay.btnClose.text = "close"
+        overlay.btnClose.setOnClickListener {
             windowManager.removeView(overlay)
             stopSelf()
         }
@@ -94,8 +85,8 @@ class OverlayService: Service() {
         params.width = (pxWidth/1.5).toInt()
         params.height = pxHeight/2
 
-        overlay.btnSave.text = "Minimize"
-        overlay.btnSave.setOnClickListener {
+        overlay.btnMinimize.text = "Minimize"
+        overlay.btnMinimize.setOnClickListener {
             Timber.d("btnSave onCLick")
             if(!minimized)
             {
@@ -112,7 +103,7 @@ class OverlayService: Service() {
                 overlay.btnFullScreen.layoutParams.width = 0
 
                 windowManager.updateViewLayout(overlay, params)
-                overlay.btnSave.text= "Maximize"
+                overlay.btnMinimize.text= "Maximize"
             }
             else
             {
@@ -124,7 +115,7 @@ class OverlayService: Service() {
                 params.height = pxHeight/2
                 params.x = 0
                 windowManager.updateViewLayout(overlay, params)
-                overlay.btnSave.text ="minimize"
+                overlay.btnMinimize.text ="minimize"
             }
             minimized = !minimized
         }
@@ -238,6 +229,19 @@ class OverlayService: Service() {
 
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
+        try{
+            val data1 = intent?.extras?.getString("firebasemessage1")
+            val data2 = intent?.extras?.getString("firebasemessage2")
+
+            Toast.makeText(this
+            , "data1, data2 are $data1, $data2",
+            Toast.LENGTH_LONG).show()
+        }
+        finally {
+
+        }
+
         when(intent?.action)
         {
             ACTION_STOP_VIEW -> {

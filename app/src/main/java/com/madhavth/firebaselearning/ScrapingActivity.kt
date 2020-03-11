@@ -1,27 +1,23 @@
 package com.madhavth.firebaselearning
 
-import android.Manifest
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.graphics.Point
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.view.*
+import android.view.GestureDetector.OnDoubleTapListener
+import android.view.ScaleGestureDetector.OnScaleGestureListener
+import android.view.View.OnTouchListener
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.app.JobIntentService
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.madhavth.firebaselearning.Widgets.ACTION_STOP_VIEW
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.iid.FirebaseInstanceId
 import com.madhavth.firebaselearning.Widgets.DRAW_OVER_OTHER_APPS
 import com.madhavth.firebaselearning.Widgets.JSOUP_ADDRESS
 import com.madhavth.firebaselearning.service.FloatingOverlayService
-import com.madhavth.firebaselearning.service.MyJobIntentService
 import com.madhavth.firebaselearning.service.OverlayService
-import kotlinx.android.synthetic.main.activity_gestures.*
 import kotlinx.android.synthetic.main.activity_scraping.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +26,7 @@ import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
 import timber.log.Timber
 
+
 class ScrapingActivity : AppCompatActivity() {
 
     private val coroutineScope=  CoroutineScope(Dispatchers.Main)
@@ -37,6 +34,8 @@ class ScrapingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scraping)
+
+        getId()
 
         coroutineScope.launch {
             jsoupTask()
@@ -113,6 +112,20 @@ class ScrapingActivity : AppCompatActivity() {
 
             val element = document.select(".mo-optin-form-note").first()
             Timber.tag("JSOUPElement").d("${element.children()}")
+        }
+    }
+
+    private fun getId()
+    {
+        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
+            task ->
+             if(!task.isSuccessful)
+                 return@addOnCompleteListener
+            else
+             {
+                 val token = task.result?.token
+                 Timber.d("Token is $token")
+            }
         }
     }
 }
