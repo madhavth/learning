@@ -1,22 +1,21 @@
 package com.madhavth.firebaselearning
 
-import android.content.Context
+import android.app.PictureInPictureParams
 import android.content.Intent
-import android.graphics.Point
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.view.*
-import android.view.GestureDetector.OnDoubleTapListener
-import android.view.ScaleGestureDetector.OnScaleGestureListener
-import android.view.View.OnTouchListener
+import android.util.DisplayMetrics
+import android.util.Rational
+import android.view.GestureDetector
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.iid.FirebaseInstanceId
 import com.madhavth.firebaselearning.Widgets.DRAW_OVER_OTHER_APPS
 import com.madhavth.firebaselearning.Widgets.JSOUP_ADDRESS
-import com.madhavth.firebaselearning.service.FloatingOverlayService
 import com.madhavth.firebaselearning.service.OverlayService
 import kotlinx.android.synthetic.main.activity_scraping.*
 import kotlinx.coroutines.CoroutineScope
@@ -28,6 +27,8 @@ import timber.log.Timber
 
 
 class ScrapingActivity : AppCompatActivity() {
+
+    var displayMetrics: Lazy<DisplayMetrics> = lazy { this.resources.displayMetrics }
 
     private val coroutineScope=  CoroutineScope(Dispatchers.Main)
 
@@ -67,18 +68,32 @@ class ScrapingActivity : AppCompatActivity() {
         }
 
         btnService2.setOnClickListener {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            if(Settings.canDrawOverlays(this))
-            {
-                Toast.makeText(applicationContext
-                , "trying to draw floating overlay",
-                Toast.LENGTH_SHORT).show()
-                val intent= Intent(this, FloatingOverlayService::class.java)
-                stopService(intent)
-                startService(intent)
+//            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+//            if(Settings.canDrawOverlays(this))
+//            {
+//                Toast.makeText(applicationContext
+//                , "trying to draw floating overlay",
+//                Toast.LENGTH_SHORT).show()
+//                val intent= Intent(this, FloatingOverlayService::class.java)
+//                stopService(intent)
+//                startService(intent)
+//            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val params = PictureInPictureParams.Builder()
+                    .setAspectRatio(getPipRatio()).build()
+
+                enterPictureInPictureMode(params)
             }
         }
+
     }
+
+    private fun getPipRatio(): Rational
+    {
+        return Rational(displayMetrics.value.heightPixels, displayMetrics.value.widthPixels)
+//        return Rational(20,20)
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -102,7 +117,8 @@ class ScrapingActivity : AppCompatActivity() {
         }
     }
 
-    suspend fun jsoupTask()
+
+    private suspend fun jsoupTask()
     {
         withContext(Dispatchers.IO)
         {

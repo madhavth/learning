@@ -2,6 +2,7 @@ package com.madhavth.firebaselearning.service
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.transition.TransitionManager
 import androidx.core.content.ContextCompat
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -12,6 +13,7 @@ class MessagingService: FirebaseMessagingService() {
 
     val FIREBASEMESSAGE1 = "firebasemessage1"
     val FIREBASEMESSAGE2 = "firebasemessage2"
+
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
