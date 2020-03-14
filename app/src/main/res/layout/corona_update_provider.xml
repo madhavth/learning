@@ -1,26 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="@dimen/widget_margin">
+    android:padding="@dimen/widget_margin"
+    android:weightSum="10">
 
     <ImageView
-        android:background="@drawable/box_background"
         android:id="@+id/imgViewCoronaUpdate"
-        android:src="@mipmap/corona_foreground"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:adjustViewBounds="true"
-        android:layout_height="match_parent"/>
+        android:background="@drawable/box_background"
+        android:src="@mipmap/corona_foreground" />
+
+    <TextView
+        android:id="@+id/tvNepalUpdates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:background="@drawable/background"
+        android:gravity="center"
+        android:text="this is how it looks "
+        android:textColor="#ffffff" />
 
 
     <ProgressBar
-        android:visibility="visible"
-        tools:visibility= "visible"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="bottom|center"
         android:id="@+id/progressLoadingCoronaUpdate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="2"
+        tools:visibility="gone" />
 
-</FrameLayout>
+</LinearLayout>
