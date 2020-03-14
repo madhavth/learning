@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/corona_update_provider"
+    android:initialLayout="@layout/corona_update_provider"
+    android:minWidth="250dp"
+    android:minHeight="180dp"
+    android:previewImage="@mipmap/corona_foreground"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="14400000"
+    android:widgetCategory="home_screen"></appwidget-provider>

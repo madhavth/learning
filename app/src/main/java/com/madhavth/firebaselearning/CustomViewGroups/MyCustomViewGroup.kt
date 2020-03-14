@@ -2,7 +2,9 @@ package com.madhavth.firebaselearning.CustomViewGroups
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import timber.log.Timber
 
@@ -39,16 +41,29 @@ class MyCustomViewGroup(context: Context, attributeSet: AttributeSet): ViewGroup
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
 
+        val displayMetrics = context.resources.displayMetrics
+        val dpHeight = displayMetrics.heightPixels / displayMetrics.density
+        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
+        val pxHeight = displayMetrics.heightPixels
+        val pxWidth = displayMetrics.widthPixels
+
         var totalWidth = 0
         var totalHeight = 0
 
         for(i in 0 until childCount)
         {
             val child =getChildAt(i)
-            if(child.measuredHeight > totalHeight)
-                totalHeight = child.measuredHeight
+
+            val lp = child.layoutParams
+            Timber.d("child lp ${lp.width}, ${lp.height}")
+
+            totalHeight+= child.measuredHeight
 
             totalWidth+= child.measuredWidth
+
+            if(totalWidth >= pxWidth)
+                totalWidth = pxWidth
+
             measureChild(child,widthMeasureSpec, heightMeasureSpec)
         }
 
@@ -77,7 +92,7 @@ class MyCustomViewGroup(context: Context, attributeSet: AttributeSet): ViewGroup
             child.layout(prevChildRight, prevChildBottom,
                 prevChildRight + child.measuredWidth, prevChildBottom + child.measuredHeight
                 )
-            prevChildRight+= child.measuredWidth
+            prevChildBottom+= child.measuredHeight
         }
     }
 }

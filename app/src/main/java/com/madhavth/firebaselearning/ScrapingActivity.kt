@@ -1,6 +1,7 @@
 package com.madhavth.firebaselearning
 
 import android.app.PictureInPictureParams
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -8,33 +9,52 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Rational
-import android.view.GestureDetector
-import android.view.MotionEvent
-import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.datatransport.runtime.scheduling.jobscheduling.SchedulerConfig
 import com.google.firebase.iid.FirebaseInstanceId
+import com.madhavth.firebaselearning.CustomViewGroups.MyBroadCastReceiver
+import com.madhavth.firebaselearning.CustomViewGroups.TRIGGER_NOTIFICATION
 import com.madhavth.firebaselearning.Widgets.DRAW_OVER_OTHER_APPS
 import com.madhavth.firebaselearning.Widgets.JSOUP_ADDRESS
 import com.madhavth.firebaselearning.service.OverlayService
 import kotlinx.android.synthetic.main.activity_scraping.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.jsoup.Jsoup
 import timber.log.Timber
+import kotlin.random.Random
 
 
 class ScrapingActivity : AppCompatActivity() {
 
     var displayMetrics: Lazy<DisplayMetrics> = lazy { this.resources.displayMetrics }
+    var list:ArrayList<ArrayList<String>> = ArrayList<ArrayList<String>>()
 
     private val coroutineScope=  CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scraping)
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Timber.d("text queried is $query")
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Timber.d("text is $newText")
+                return true
+            }
+
+        })
 
         getId()
 
@@ -86,6 +106,28 @@ class ScrapingActivity : AppCompatActivity() {
             }
         }
 
+
+        //trigger broadcast receiver to send toast message
+        btnService3.setOnClickListener {
+            val intent = Intent(this, MyBroadCastReceiver::class.java)
+            intent.action = TRIGGER_NOTIFICATION
+            sendBroadcast(intent)
+            val intentCamera = Intent(this, CameraActivity::class.java)
+            startActivity(intentCamera)
+        }
+
+
+        for(i in 0..3)
+        {
+            val tempList = ArrayList<String>()
+            for(j in 0..2)
+            {
+                tempList.add(j.toString())
+            }
+            list.add(tempList)
+        }
+
+        viewPager2.adapter = PagerAdapter(this)
     }
 
     private fun getPipRatio(): Rational
@@ -143,5 +185,21 @@ class ScrapingActivity : AppCompatActivity() {
                  Timber.d("Token is $token")
             }
         }
+    }
+
+    inner class PagerAdapter(fa: FragmentActivity): FragmentStateAdapter(fa)
+    {
+        override fun getItemCount(): Int {
+            return list.size
+        }
+
+        override fun createFragment(position: Int): Fragment {
+            val fragment =  HorizantalListFragment.getInstance()
+            val bundle = Bundle()
+            bundle.putStringArrayList("myItems",list[position])
+            fragment.arguments=  bundle
+            return fragment
+        }
+
     }
 }

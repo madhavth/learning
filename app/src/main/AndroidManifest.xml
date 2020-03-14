@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MyApplication"
@@ -25,7 +26,28 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <receiver android:name="com.prologic.firebaselearning.ThreeButtonsWidget">
+        <receiver android:name=".CoronaUpdateProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/corona_update_provider_info" />
+        </receiver>
+
+        <activity android:name=".CameraActivity" />
+
+        <receiver android:name=".CustomAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/custom_app_widget_provider_info" />
+        </receiver>
+        <receiver android:name=".ThreeButtonsWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="BUTTON_CLICK_1" />
@@ -42,21 +64,21 @@
             android:name=".service.MessagingService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".ScrapingActivity"
-            android:supportsPictureInPicture="true"
+        <activity
+            android:name=".ScrapingActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            >
+            android:supportsPictureInPicture="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GesturesActivity"></activity>
+        <activity android:name=".GesturesActivity" />
         <activity android:name=".ImageSearchResultActivity" />
         <activity android:name=".CanvasActivity" />
         <activity android:name=".TicTacActivity" />
@@ -98,6 +120,13 @@
         <receiver android:name=".MyBroadReceiver">
             <intent-filter>
                 <action android:name="something_new_or_whatever" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".CustomViewGroups.MyBroadCastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="TRIGGER_NOTIFICATION" />
             </intent-filter>
         </receiver>
 
