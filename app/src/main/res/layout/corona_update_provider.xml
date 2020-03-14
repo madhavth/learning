@@ -15,16 +15,26 @@
         android:background="@drawable/box_background"
         android:src="@mipmap/corona_foreground" />
 
-    <TextView
-        android:id="@+id/tvNepalUpdates"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:background="@drawable/background"
-        android:gravity="center"
-        android:text="this is how it looks "
-        android:textColor="#ffffff" />
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tvNepalUpdates"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="this is how it looks "
+            android:textColor="#ffffff" />
 
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/tvWorldTotalCases"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        tools:text = "world stats"
+        android:background="@drawable/background"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <ProgressBar
         android:id="@+id/progressLoadingCoronaUpdate"
@@ -33,6 +43,6 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:layout_weight="2"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 
 </LinearLayout>

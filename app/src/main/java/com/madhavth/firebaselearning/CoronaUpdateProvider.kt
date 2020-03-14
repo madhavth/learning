@@ -1,19 +1,25 @@
 package com.madhavth.firebaselearning
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.View
 import android.widget.RemoteViews
+import android.widget.Toast
 import com.madhavth.firebaselearning.service.retorift.TestApi
 import kotlinx.coroutines.*
 import timber.log.Timber
 
-/**
- * Implementation of App Widget functionality.
- */
+
+const val TRIGGER_UPDATE_CORONA_NEPAL = "TRIGGER_UPDATE_CORONA_NEPAL"
+const val TRIGGER_WORLD_STATS_UPDATE = "TRIGGER_WORLD_STATS_UPDATE"
+const val UPDATE_MASK_TIPS = "UPDATE_MASK_TIPS"
+
 class CoronaUpdateProvider : AppWidgetProvider() {
 
     override fun onUpdate(
@@ -57,6 +63,7 @@ class CoronaUpdateProvider : AppWidgetProvider() {
 
     suspend fun getNepalCases(): String
     {
+
         return withContext(Dispatchers.IO)
         {
             try {
@@ -95,15 +102,102 @@ class CoronaUpdateProvider : AppWidgetProvider() {
 
                 val cases = "Nepal cases - $cases4, deaths - $death6, total recovered: $totalRecovered10\n" +
                         "new deaths - $newDeaths12, new cases - $newCases14, serious critcal - $seriousCritical16"
+
+                appPrefrence.nepalStats = cases
+
                 return@withContext cases
             }
             catch (e: Exception) {
                 Timber.d("cases error due to ${e.message}")
-                return@withContext "error retreiving cases"
+                return@withContext appPrefrence.nepalStats
             }
         }
     }
 
+
+    suspend fun getWorldStats(): String
+    {
+        return withContext(Dispatchers.IO)
+        {
+            try{
+                var result = TestApi.retrofitService.getTotalWorldCases().await()
+
+                var worldStats = "World total cases : ${result.totalCases}, deaths: ${result.totalDeaths}, recovered: ${result.totalRecovered}\n" +
+                        "new cases: ${result.newCases}, deaths: ${result.newDeaths}, statistics taken at: ${result.statisticTakenAt}"
+
+                appPrefrence.worldStats = worldStats
+                return@withContext worldStats
+            }
+            catch (e: Exception)
+            {
+                return@withContext appPrefrence.worldStats
+            }
+        }
+    }
+
+    private lateinit var appPrefrence: AppPrefrence
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        appPrefrence = AppPrefrence(context!!)
+        super.onReceive(context, intent)
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val views = RemoteViews(context?.packageName,R.layout.corona_update_provider)
+        val componentName = ComponentName(context!!, CoronaUpdateProvider::class.java)
+
+        if(intent?.action == TRIGGER_UPDATE_CORONA_NEPAL)
+        {
+            try{
+                CoroutineScope(Dispatchers.IO).launch {
+                    views.setTextViewText(R.id.tvNepalUpdates, "fetching..")
+                    appWidgetManager.updateAppWidget(componentName, views)
+                    val updatedText = getNepalCases()
+
+                    views.setTextViewText(R.id.tvNepalUpdates, updatedText)
+                    appWidgetManager.updateAppWidget(componentName,views)
+                }
+            }
+            catch(e: Exception)
+            {
+
+            }
+        }
+
+        else if(intent?.action == TRIGGER_WORLD_STATS_UPDATE)
+        {
+            CoroutineScope(Dispatchers.IO).launch {
+                views.setTextViewText(R.id.tvWorldTotalCases, "updating world stats..")
+                appWidgetManager.updateAppWidget(componentName, views)
+
+                val updatedWorldStats = getWorldStats()
+                views.setTextViewText(R.id.tvWorldTotalCases, updatedWorldStats)
+                appWidgetManager.updateAppWidget(componentName, views)
+            }
+        }
+
+        else if(intent?.action == UPDATE_MASK_TIPS)
+        {
+            CoroutineScope(Dispatchers.IO).launch {
+                views.setImageViewResource(R.id.imgViewCoronaUpdate, R.drawable.images)
+                appWidgetManager.updateAppWidget(componentName, views)
+
+                val bitmap = getCoronaUpdate()
+                if(bitmap == null)
+                {
+                    views.setImageViewResource(R.id.imgViewCoronaUpdate, R.mipmap.corona_foreground)
+                }
+                else
+                {
+                    val bitmapOptions = BitmapFactory.Options()
+                    val newbitmap = BitmapFactory.decodeByteArray(bitmap,0, bitmap.size,bitmapOptions)
+                    views.setImageViewBitmap(R.id.imgViewCoronaUpdate, newbitmap)
+                }
+                appWidgetManager.updateAppWidget(componentName,views)
+            }
+        }
+
+
+
+    }
 
     private fun updateAppWidget(
         context: Context,
@@ -119,15 +213,35 @@ class CoronaUpdateProvider : AppWidgetProvider() {
         views.setImageViewResource(R.id.imgViewCoronaUpdate, R.drawable.images)
         appWidgetManager.updateAppWidget(appWidgetId,views)
 
+        val intent = Intent(context, CoronaUpdateProvider::class.java)
+        intent.action = "TRIGGER_UPDATE_CORONA_NEPAL"
+        val pendingIntent = PendingIntent.getBroadcast(context,0
+            , intent, 0)
+
+        val intent2 = Intent(context, CoronaUpdateProvider::class.java)
+        intent2.action = "TRIGGER_WORLD_STATS_UPDATE"
+        val pendingIntent2 = PendingIntent.getBroadcast(context, 1, intent2, 0)
+
+
+        val intentImageClick = Intent(context, CoronaUpdateProvider::class.java)
+        intentImageClick.action = UPDATE_MASK_TIPS
+        val pendingIntent3 = PendingIntent.getBroadcast(context, 2, intentImageClick,0)
+
+
+        views.setOnClickPendingIntent(R.id.tvNepalUpdates,pendingIntent)
+        views.setOnClickPendingIntent(R.id.tvWorldTotalCases, pendingIntent2)
+        views.setOnClickPendingIntent(R.id.imgViewCoronaUpdate, pendingIntent3)
+
         CoroutineScope(Dispatchers.Main).launch {
             val txtNepalUpdate = getNepalCases()
+            val txtWorldStats = getWorldStats()
             val myImage = getCoronaUpdate() ?: return@launch
 
             views.setViewVisibility(R.id.progressLoadingCoronaUpdate, View.GONE )
             val bitmapOptions = BitmapFactory.Options()
             val bitmap = BitmapFactory.decodeByteArray(myImage,0, myImage.size, bitmapOptions)
 
-
+            views.setTextViewText(R.id.tvWorldTotalCases, txtWorldStats)
             views.setTextViewText(R.id.tvNepalUpdates, txtNepalUpdate)
             views.setImageViewBitmap(R.id.imgViewCoronaUpdate,bitmap)
             // Instruct the widget manager to update the widget

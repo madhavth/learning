@@ -29,6 +29,7 @@
         <receiver android:name=".CoronaUpdateProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="TRIGGER_UPDATE_CORONA_NEPAL"/>
             </intent-filter>
 
             <meta-data
