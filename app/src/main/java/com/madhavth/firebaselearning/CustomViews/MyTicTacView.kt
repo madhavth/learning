@@ -72,7 +72,7 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
 
         paintWin.apply {
             isAntiAlias= true
-            strokeWidth = 8f
+            strokeWidth = 20f
             color = Color.WHITE
         }
 
@@ -218,7 +218,7 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
                 maxXY = pointsLine.maxBy { it.y }!!
             }
 
-            canvas?.drawLine(minXY.x,minXY.y, maxXY.x,maxXY.y,paintLine)
+            canvas?.drawLine(minXY.x,minXY.y, maxXY.x,maxXY.y,paintWin)
 
             Toast.makeText(context
             , "winner is $winner",
