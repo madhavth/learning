@@ -3,6 +3,8 @@ package com.madhavth.firebaselearning
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import com.madhavth.firebaselearning.CustomViews.MyTicTacView
 import kotlinx.android.synthetic.main.tic_tac_gameplay.*
 
 class TicTacGamePlayActivity : AppCompatActivity() {
@@ -21,5 +23,13 @@ class TicTacGamePlayActivity : AppCompatActivity() {
             , "bot is busy right now..",
             Toast.LENGTH_SHORT).show()
         }
+
+        ticTacCustomView.playerOneScore.observe(this, Observer {
+            tvOpponentScores.text = "score: ${ticTacCustomView.playerOneScore.value} - ${ticTacCustomView.playerTwoScore.value}"
+        })
+
+        ticTacCustomView.playerTwoScore.observe(this, Observer {
+            tvOpponentScores.text = "score: ${ticTacCustomView.playerOneScore.value} - ${ticTacCustomView.playerTwoScore.value}"
+        })
     }
 }

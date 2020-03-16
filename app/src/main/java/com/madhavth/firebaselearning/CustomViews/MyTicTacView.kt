@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -40,8 +41,8 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
     private var winner: TURN? = null
     private var winCondition = WinCondition(0,0,0,0,0,0,0,0)
 
-    var playerOneScore = 0
-    var playerTwoScore = 0
+    var playerOneScore = MutableLiveData<Int>()
+    var playerTwoScore = MutableLiveData<Int>()
 
     private var gameStopped = false
 
@@ -58,6 +59,9 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
 
 
     init{
+        playerOneScore.value = 0
+        playerTwoScore.value = 0
+
         paintLine.apply {
             isAntiAlias= true
             color = Color.BLACK
@@ -296,9 +300,9 @@ catch (e:Exception)
             Toast.LENGTH_SHORT).show()
 
             if(winner == TURN.PLAYER1)
-                playerOneScore++
+                playerOneScore.value = playerOneScore.value!!+1
             else
-                playerTwoScore++
+                playerTwoScore.value = playerTwoScore.value!!+1
 
             gameStopped =!gameStopped
 
@@ -338,8 +342,8 @@ catch (e:Exception)
         count = 0
         mapDrawInfos.clear()
         gameStopped = false
-        playerOneScore= 0
-        playerTwoScore= 0
+        playerOneScore.value= 0
+        playerTwoScore.value= 0
     }
 
 
