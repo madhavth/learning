@@ -13,7 +13,7 @@
         android:layout_weight="8"
         android:adjustViewBounds="true"
         android:background="@drawable/box_background"
-        android:src="@mipmap/corona_foreground" />
+        android:src="@drawable/coronavirusstaysafe" />
 
         <TextView
             android:layout_weight="1"

@@ -8,12 +8,14 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.Toast
 import com.madhavth.firebaselearning.service.retorift.TestApi
 import kotlinx.coroutines.*
 import timber.log.Timber
+import java.io.ByteArrayOutputStream
 
 
 const val TRIGGER_UPDATE_CORONA_NEPAL = "TRIGGER_UPDATE_CORONA_NEPAL"
@@ -209,6 +211,7 @@ class CoronaUpdateProvider : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.corona_update_provider)
 
         views.setTextViewText(R.id.tvNepalUpdates, "fetching...")
+        views.setTextViewText(R.id.tvWorldTotalCases,"fetching...")
         views.setViewVisibility(R.id.progressLoadingCoronaUpdate, View.VISIBLE)
         views.setImageViewResource(R.id.imgViewCoronaUpdate, R.drawable.images)
         appWidgetManager.updateAppWidget(appWidgetId,views)
@@ -235,15 +238,22 @@ class CoronaUpdateProvider : AppWidgetProvider() {
         CoroutineScope(Dispatchers.Main).launch {
             val txtNepalUpdate = getNepalCases()
             val txtWorldStats = getWorldStats()
-            val myImage = getCoronaUpdate() ?: return@launch
+            val myImage = getCoronaUpdate()
 
             views.setViewVisibility(R.id.progressLoadingCoronaUpdate, View.GONE )
             val bitmapOptions = BitmapFactory.Options()
-            val bitmap = BitmapFactory.decodeByteArray(myImage,0, myImage.size, bitmapOptions)
+            if(myImage!= null)
+            {
+                val bitmap = BitmapFactory.decodeByteArray(myImage,0, myImage.size, bitmapOptions)
+                views.setImageViewBitmap(R.id.imgViewCoronaUpdate,bitmap)
+            }
+            else
+            {
+                views.setImageViewResource(R.id.imgViewCoronaUpdate, R.drawable.coronavirusstaysafe)
+            }
 
             views.setTextViewText(R.id.tvWorldTotalCases, txtWorldStats)
             views.setTextViewText(R.id.tvNepalUpdates, txtNepalUpdate)
-            views.setImageViewBitmap(R.id.imgViewCoronaUpdate,bitmap)
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }

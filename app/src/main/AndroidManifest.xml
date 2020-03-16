@@ -26,10 +26,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".TicTacGamePlayActivity"></activity>
+
+        <receiver android:name=".Widgets.DeveloperWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/developer_widget_provider_info" />
+        </receiver>
         <receiver android:name=".CoronaUpdateProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="TRIGGER_UPDATE_CORONA_NEPAL"/>
+                <action android:name="TRIGGER_UPDATE_CORONA_NEPAL" />
             </intent-filter>
 
             <meta-data
@@ -37,17 +48,14 @@
                 android:resource="@xml/corona_update_provider_info" />
         </receiver>
 
-        <activity android:name=".CameraActivity" />
-
-        <receiver android:name=".CustomAppWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/custom_app_widget_provider_info" />
-        </receiver>
+        <activity android:name=".CameraActivity" /> <!-- <receiver android:name=".CustomAppWidgetProvider"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.appwidget.provider" -->
+        <!-- android:resource="@xml/custom_app_widget_provider_info" /> -->
+        <!-- </receiver> -->
         <receiver android:name=".ThreeButtonsWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -82,42 +90,34 @@
         <activity android:name=".GesturesActivity" />
         <activity android:name=".ImageSearchResultActivity" />
         <activity android:name=".CanvasActivity" />
-        <activity android:name=".TicTacActivity" />
-
-        <receiver android:name=".NewAppWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="action_MY_NEW_ACTION" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/new_app_widget_info" />
-        </receiver>
-
-        <activity android:name=".Widgets.WidgetConfigure" />
-
-        <receiver android:name=".Widgets.WeatherWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="action_WEATHER_FETCH" />
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/weather_widget_info" />
-        </receiver>
-        <receiver android:name=".Widgets.TestWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="something_new_or_whatever" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/my_new_widget_test" />
-        </receiver>
+        <activity android:name=".TicTacActivity" /> <!-- <receiver android:name=".NewAppWidget"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+        <!-- <action android:name="action_MY_NEW_ACTION" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.appwidget.provider" -->
+        <!-- android:resource="@xml/new_app_widget_info" /> -->
+        <!-- </receiver> -->
+        <activity android:name=".Widgets.WidgetConfigure" /> <!-- <receiver android:name=".Widgets.WeatherWidgetProvider"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+        <!-- <action android:name="action_WEATHER_FETCH" /> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.appwidget.provider" -->
+        <!-- android:resource="@xml/weather_widget_info" /> -->
+        <!-- </receiver> -->
+        <!-- <receiver android:name=".Widgets.TestWidgetProvider"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+        <!-- <action android:name="something_new_or_whatever" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.appwidget.provider" -->
+        <!-- android:resource="@xml/my_new_widget_test" /> -->
+        <!-- </receiver> -->
         <receiver android:name=".MyBroadReceiver">
             <intent-filter>
                 <action android:name="something_new_or_whatever" />
@@ -148,22 +148,11 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service android:name=".service.OverlayService" />
         <service android:name=".service.FloatingOverlayService" />
+        <service android:name=".service.NewOverlayService" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
-
-        <receiver android:name=".Widgets.MyWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-                <action android:name="old_Action_also_works" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/example_widget_info" />
-        </receiver>
     </application>
 
 </manifest>

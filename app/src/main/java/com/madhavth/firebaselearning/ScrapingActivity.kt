@@ -26,6 +26,7 @@ import com.madhavth.firebaselearning.CustomViewGroups.TRIGGER_NOTIFICATION
 import com.madhavth.firebaselearning.Widgets.DRAW_OVER_OTHER_APPS
 import com.madhavth.firebaselearning.Widgets.JSOUP_ADDRESS
 import com.madhavth.firebaselearning.service.NepalCases
+import com.madhavth.firebaselearning.service.NewOverlayService
 import com.madhavth.firebaselearning.service.OverlayService
 import com.madhavth.firebaselearning.service.TestApi
 import kotlinx.android.synthetic.main.activity_scraping.*
@@ -114,11 +115,14 @@ class ScrapingActivity : AppCompatActivity() {
 
         //trigger broadcast receiver to send toast message
         btnService3.setOnClickListener {
-            val intent = Intent(this, MyBroadCastReceiver::class.java)
-            intent.action = TRIGGER_NOTIFICATION
-            sendBroadcast(intent)
-            val intentCamera = Intent(this, CameraActivity::class.java)
-            startActivity(intentCamera)
+//            val intent = Intent(this, MyBroadCastReceiver::class.java)
+//            intent.action = TRIGGER_NOTIFICATION
+//            sendBroadcast(intent)
+//            val intentCamera = Intent(this, CameraActivity::class.java)
+//            startActivity(intentCamera)
+
+            val intent = Intent(this, TicTacGamePlayActivity::class.java)
+            startActivity(intent)
         }
 
 
@@ -133,8 +137,11 @@ class ScrapingActivity : AppCompatActivity() {
         }
 
         viewPager2.adapter = PagerAdapter(this)
-        CoroutineScope(Dispatchers.Main).launch{
-            getNepalCases()
+
+
+        myCustomViewGroup.setOnClickListener {
+            val intent = Intent(this, TicTacActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -182,51 +189,6 @@ class ScrapingActivity : AppCompatActivity() {
             }
             catch(e: Exception)
             {
-
-            }
-        }
-    }
-
-    suspend fun getNepalCases()
-    {
-        withContext(Dispatchers.IO)
-        {
-            try {
-                val allCases = com.madhavth.firebaselearning
-                    .service.retorift.TestApi.retrofitService.getCasesByCountry().await().string()
-
-                val nepalIndex = allCases.indexOf("\"country_name\":\"Nepal\"")
-
-                val nepalCases = allCases.substring(nepalIndex, nepalIndex+200)
-                val nepalSubString = nepalCases.split("\"").filter{
-
-                        when(it)
-                        {
-                            "," -> return@filter false
-                            ":" -> return@filter false
-                            else -> return@filter true
-                        }
-                }
-
-                //Timber.d("nepal cases are $nepalCases")
-                Timber.d("nepal subStrings are $nepalSubString")
-
-                nepalSubString.forEach{ sub ->
-                    Timber.d("string is $sub")
-                }
-
-                val cases4 = nepalSubString[4]
-                val death6 = nepalSubString[6]
-                val totalRecovered10= nepalSubString[10]
-                val newDeaths12 = nepalSubString[12]
-                val newCases14 = nepalSubString[14]
-                val seriousCritical16 = nepalSubString[16]
-
-                Timber.d("cases - $cases4, deaths - $death6, total recovered: $totalRecovered10" +
-                        ",new Deaths - $newDeaths12, newCases - $newCases14, seriousCritcal - $seriousCritical16")
-            }
-            catch (e: Exception) {
-                Timber.d("cases error due to ${e.message}")
 
             }
         }

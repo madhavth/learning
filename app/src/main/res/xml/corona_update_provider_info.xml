@@ -4,7 +4,7 @@
     android:initialLayout="@layout/corona_update_provider"
     android:minWidth="250dp"
     android:minHeight="180dp"
-    android:previewImage="@mipmap/corona_foreground"
+    android:previewImage="@drawable/coronavirusstaysafe"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="14400000"
     android:widgetCategory="home_screen"></appwidget-provider>

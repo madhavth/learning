@@ -29,7 +29,7 @@
         android:id="@+id/btnService3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="bubble service"
+        android:text="tic tac game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
      />
