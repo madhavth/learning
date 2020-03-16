@@ -40,6 +40,9 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
     private var winner: TURN? = null
     private var winCondition = WinCondition(0,0,0,0,0,0,0,0)
 
+    var playerOneScore = 0
+    var playerTwoScore = 0
+
     private var gameStopped = false
 
     //could be better like game board List<List<>> i.e. [["x","o","x"],["","",""],["","",""]]
@@ -81,6 +84,45 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
 
         //init test for now
     }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+            Timber.d("onMeasure w: ${MeasureSpec.toString(widthMeasureSpec)}")
+            Timber.d("onMeasure h: ${MeasureSpec.toString(heightMeasureSpec)}")
+
+            val desiredWidth = suggestedMinimumWidth + paddingStart + paddingEnd
+            val desiredHeight = suggestedMinimumHeight + paddingTop + paddingBottom
+
+            Timber.tag("heightWidth").d("desiredWidth height $desiredWidth, $desiredHeight")
+            setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), measureDimension(desiredHeight, heightMeasureSpec))
+        }
+
+
+        private fun measureDimension(desiredSize: Int,  measuredSpec: Int): Int
+        {
+            var result = 0
+            val specMode = MeasureSpec.getMode(measuredSpec)
+            val specSize = MeasureSpec.getSize(measuredSpec)
+
+            Timber.d("specSize measureDimension specSize is $specSize")
+            if(specMode == MeasureSpec.EXACTLY)
+            {
+                result = specSize
+            }
+            else
+            {
+                result = desiredSize
+                if(specMode == MeasureSpec.AT_MOST)
+                {
+                    result = specSize*4/5
+                }
+            }
+
+            if(result< desiredSize)
+                Timber.d("result is less than desiredSize $result, $desiredSize")
+
+            Timber.d("the result is $result")
+            return result
+        }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
@@ -253,6 +295,11 @@ catch (e:Exception)
             , "winner is $winner",
             Toast.LENGTH_SHORT).show()
 
+            if(winner == TURN.PLAYER1)
+                playerOneScore++
+            else
+                playerTwoScore++
+
             gameStopped =!gameStopped
 
             CoroutineScope(Dispatchers.IO).launch {
@@ -282,6 +329,17 @@ catch (e:Exception)
         count = 0
         mapDrawInfos.clear()
         gameStopped =!gameStopped
+    }
+
+    fun resetGame()
+    {
+        this@MyTicTacView.invalidate()
+        winner =null
+        count = 0
+        mapDrawInfos.clear()
+        gameStopped = false
+        playerOneScore= 0
+        playerTwoScore= 0
     }
 
 
