@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -13,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
+
 
 enum class TURN{
     PLAYER2, PLAYER1
@@ -63,6 +65,7 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
             isAntiAlias = true
             color = Color.YELLOW
             textSize = 75.dp
+            textAlign = Paint.Align.CENTER
         }
 
         paintBG.apply {
@@ -89,6 +92,19 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
         }
     }
 
+    fun getApproxXToCenterText(
+        text: String?,
+        typeface: Typeface?,
+        fontSize: Int,
+        widthToFitStringInto: Int
+    ): Int {
+        val p = Paint()
+        p.typeface = typeface
+        p.textSize = fontSize.toFloat()
+        val textWidth = p.measureText(text)
+        return ((widthToFitStringInto - textWidth) / 2f).toInt() - (fontSize / 2f).toInt()
+    }
+
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
@@ -106,26 +122,39 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
         canvas?.drawLine(left.toFloat(), bottom/3f,right.toFloat(),  bottom/3f, paintLine)
         canvas?.drawLine(ticTacLayout.left.toFloat(), 2* ticTacLayout.bottom/3f, ticTacLayout.right.toFloat(), 2* ticTacLayout.bottom/3f, paintLine)
 
-        mapDrawInfos.forEach{
-            Timber.d("mapDrawInfo mapping $it")
-            if(it.value.points.x !=0f && it.value.points.y != 0f)
-            {
-                if(it.value.player == TURN.PLAYER1)
-                {
-                    paintText.color = Color.YELLOW
-                }
-
-                else
-                {
-                    paintText.color = Color.BLUE
-                }
-
-                Timber.d("map Index  ${it.key}=> Points ${it.value.points}, Player = ${it.value.player}")
-                canvas?.drawText(
-                    if(it.value.player == TURN.PLAYER1)
-                        "O" else "X", it.value.points.x-width/12, it.value.points.y+height/12, paintText)
+try {
+    mapDrawInfos.forEach {
+        Timber.d("mapDrawInfo mapping $it")
+        if (it.value.points.x != 0f && it.value.points.y != 0f) {
+            if (it.value.player == TURN.PLAYER1) {
+                paintText.color = Color.YELLOW
+            } else {
+                paintText.color = Color.BLUE
             }
+
+            var text = if (it.value.player == TURN.PLAYER1) "O" else "X"
+            val xOffSet = getApproxXToCenterText(
+                text, paintText.typeface
+                , paintText.textSize.toInt(), (right - left) / 3
+            )
+
+            val yOffSet = getApproxXToCenterText(
+                text, paintText.typeface
+                , paintText.textSize.toInt(), (bottom - top) / 3
+            )
+
+
+            Timber.d("map Index  ${it.key}=> Points ${it.value.points}, Player = ${it.value.player}")
+            canvas?.drawText(
+                text, it.value.points.x, it.value.points.y, paintText
+            )
         }
+    }
+}
+catch (e:Exception)
+{
+    Timber.d("mapDrawInfos foreach exception is ${e.message}")
+}
 
         //todo: optimize this long line of code
 
@@ -235,7 +264,7 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet): View(context, 
         {
             count = 0
             Toast.makeText(context
-            , "it's a drawwww!!! you are both terrible or equally good or both congrats",
+            , "it's a drawwww!!!",
             Toast.LENGTH_LONG).show()
             gameStopped =!gameStopped
 
