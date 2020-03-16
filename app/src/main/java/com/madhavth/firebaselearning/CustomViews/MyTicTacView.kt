@@ -303,7 +303,7 @@ catch (e:Exception)
             else
                 playerTwoScore.value = playerTwoScore.value!!+1
 
-            gameStopped =!gameStopped
+            gameStopped =true
 
             CoroutineScope(Dispatchers.IO).launch {
                 gameOver()
@@ -313,10 +313,10 @@ catch (e:Exception)
         else if (count == 9 && winner == null)
         {
             count = 0
-            Toast.makeText(context
+            Snackbar.make(this
             , "it's a drawwww!!!",
-            Toast.LENGTH_LONG).show()
-            gameStopped =!gameStopped
+            Snackbar.LENGTH_LONG).show()
+            gameStopped =true
 
             CoroutineScope(Dispatchers.IO).launch {
                 gameOver()
@@ -331,7 +331,7 @@ catch (e:Exception)
         winner =null
         count = 0
         mapDrawInfos.clear()
-        gameStopped =!gameStopped
+        gameStopped =false
     }
 
     fun resetGame()
