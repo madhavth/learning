@@ -10,6 +10,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -295,9 +296,7 @@ catch (e:Exception)
 
             canvas?.drawLine(minXY.x,minXY.y, maxXY.x,maxXY.y,paintWin)
 
-            Toast.makeText(context
-            , "winner is $winner",
-            Toast.LENGTH_SHORT).show()
+            Snackbar.make(this, "winner is $winner",Snackbar.LENGTH_LONG).show()
 
             if(winner == TURN.PLAYER1)
                 playerOneScore.value = playerOneScore.value!!+1
