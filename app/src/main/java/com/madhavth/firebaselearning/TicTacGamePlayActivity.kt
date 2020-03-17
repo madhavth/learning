@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.madhavth.firebaselearning.CustomViews.MyTicTacView
 import kotlinx.android.synthetic.main.tic_tac_gameplay.*
 
@@ -19,9 +20,7 @@ class TicTacGamePlayActivity : AppCompatActivity() {
 
         btnswitchTicTacOpponent.setOnClickListener {
             //todo
-            Toast.makeText(applicationContext
-            , "bot is busy right now..",
-            Toast.LENGTH_SHORT).show()
+            ticTacCustomView.toggleOpponent()
         }
 
         ticTacCustomView.playerOneScore.observe(this, Observer {
