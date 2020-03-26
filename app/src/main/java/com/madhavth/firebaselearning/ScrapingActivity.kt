@@ -1,7 +1,8 @@
 package com.madhavth.firebaselearning
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.app.PictureInPictureParams
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -9,32 +10,21 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Rational
-import android.view.Window
-import android.view.WindowManager
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.datatransport.runtime.scheduling.jobscheduling.SchedulerConfig
 import com.google.firebase.iid.FirebaseInstanceId
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import com.madhavth.firebaselearning.CustomViewGroups.MyBroadCastReceiver
-import com.madhavth.firebaselearning.CustomViewGroups.TRIGGER_NOTIFICATION
 import com.madhavth.firebaselearning.Widgets.DRAW_OVER_OTHER_APPS
 import com.madhavth.firebaselearning.Widgets.JSOUP_ADDRESS
-import com.madhavth.firebaselearning.service.NepalCases
-import com.madhavth.firebaselearning.service.NewOverlayService
 import com.madhavth.firebaselearning.service.OverlayService
-import com.madhavth.firebaselearning.service.TestApi
 import kotlinx.android.synthetic.main.activity_scraping.*
 import kotlinx.coroutines.*
 import org.jsoup.Jsoup
 import timber.log.Timber
-import java.util.regex.Pattern
-import kotlin.random.Random
 
 
 class ScrapingActivity : AppCompatActivity() {
@@ -140,9 +130,50 @@ class ScrapingActivity : AppCompatActivity() {
 
 
         myCustomViewGroup.setOnClickListener {
-            val intent = Intent(this, TicTacActivity::class.java)
+            Toast.makeText(this
+                , "navigating",
+                Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@ScrapingActivity, AnimActivity::class.java)
             startActivity(intent)
         }
+
+        val valueAnimator = ValueAnimator.ofFloat(0f,1f)
+
+        valueAnimator.duration = 2000
+
+        valueAnimator.addUpdateListener {
+            btnService.x = it.animatedValue.toString().toFloat()  * 100
+            btnService.y = it.animatedValue.toString().toFloat()  * 100
+        }
+
+        valueAnimator.startDelay = 2000
+        valueAnimator.start()
+
+        anotherValueAnimator()
+
+
+        objectAnimator()
+    }
+
+    private fun anotherValueAnimator() {
+        val valueAnimator = ValueAnimator.ofFloat(0f,1f)
+
+        valueAnimator.addUpdateListener {
+            btnService.x = it.animatedFraction * 200
+            btnService2.y = it.animatedFraction * 100
+        }
+        valueAnimator.start()
+    }
+
+    private fun objectAnimator()
+    {
+        val objectAnimator = ObjectAnimator
+            .ofFloat(btnService3, "translationY", 0f,500f)
+            .setDuration(5000)
+
+        objectAnimator.interpolator = AccelerateDecelerateInterpolator()
+        objectAnimator.startDelay= 500
+        objectAnimator.start()
     }
 
     private fun getPipRatio(): Rational
@@ -172,6 +203,11 @@ class ScrapingActivity : AppCompatActivity() {
                 }
             }
         }
+
+        btnAnimationPage.setOnClickListener {
+
+        }
+
     }
 
 

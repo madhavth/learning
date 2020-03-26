@@ -1,10 +1,13 @@
 package com.madhavth.firebaselearning.Widgets
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
 import com.madhavth.firebaselearning.R
+import com.madhavth.firebaselearning.TransparentActivity
 
 /**
  * Implementation of App Widget functionality.
@@ -28,15 +31,20 @@ class DeveloperWidgetProvider : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-    internal fun updateAppWidget(
+    private fun updateAppWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetId: Int
     ) {
-        val widgetText = context.getString(R.string.appwidget_text)
         // Construct the RemoteViews object
         val views = RemoteViews(context.packageName, R.layout.developer_widget_provider)
-        views.setTextViewText(R.id.appwidget_text, widgetText)
+
+        val pendingIntent = Intent(context, TransparentActivity::class.java).let{
+            it.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+            PendingIntent.getActivity(context,0, it, 0)
+        }
+
+        views.setOnClickPendingIntent(R.id.btnTransparentOpen,pendingIntent)
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views)

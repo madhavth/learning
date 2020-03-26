@@ -6,24 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.madhavth.firebaselearning.ScrapingActivity">
 
+
+    <Button
+        android:id="@+id/btnAnimationPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="animated"
+        app:layout_constraintBottom_toTopOf="@id/viewPager2"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
     <Button
         android:id="@+id/btnService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="start service"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnService2"
-        android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="PIP Mode"
         app:layout_constraintStart_toEndOf="@id/btnService"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnService3"
@@ -31,8 +39,7 @@
         android:layout_height="wrap_content"
         android:text="tic tac game"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-     />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.madhavth.firebaselearning.CustomViewGroups.MyCustomViewGroup
         android:id="@+id/myCustomViewGroup"

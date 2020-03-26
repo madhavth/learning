@@ -207,10 +207,12 @@ class MyTicTacView(context: Context, attributeSet: AttributeSet) : View(context,
                         , paintText.textSize.toInt(), (bottom - top) / 3
                     )
 
+                    val yOffset = (bottom-top)/20f
+
 
                     Timber.d("map Index  ${it.key}=> Points ${it.value.points}, Player = ${it.value.player}")
                     canvas?.drawText(
-                        text, it.value.points.x, it.value.points.y, paintText
+                        text, it.value.points.x, it.value.points.y+ yOffset, paintText
                     )
                 }
             }
