@@ -16,6 +16,7 @@ class TransparentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_transparent)
     }
 
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         Timber.d("The touchevent on transparent activity")
         this.finish()

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ConstraintSet
+        android:id="@+id/start1">
+    <Constraint
+        android:id="@+id/imgMotionLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:alpha="0.5"
+        />
+
+        <Constraint
+            android:id="@+id/btnMotionLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgMotionLayout"
+            />
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/end1">
+        <Constraint
+            android:id="@+id/imgMotionLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="100dp"
+            android:alpha="1.0"
+            android:layout_width="match_parent"
+            />
+
+        <Constraint
+            android:id="@+id/btnMotionLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetStart="@id/start1"
+        app:constraintSetEnd="@+id/end1"
+        app:duration="1000"
+        >
+        <OnSwipe
+            app:touchAnchorId="@id/imgMotionLayout"
+            app:touchAnchorSide="bottom"
+            app:dragDirection="dragDown"
+            />
+
+    </Transition>
+</MotionScene>

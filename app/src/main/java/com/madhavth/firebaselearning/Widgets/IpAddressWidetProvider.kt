@@ -7,19 +7,24 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Context.WIFI_SERVICE
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.InetAddresses
 import android.net.wifi.WifiManager
 import android.os.Build
+import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.text.format.Formatter
 import android.widget.RemoteViews
 import android.widget.Toast
+import com.madhavth.firebaselearning.AppPrefrence
 import com.madhavth.firebaselearning.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.lang.ref.WeakReference
 import java.net.InetAddress
 import java.text.Format
 
@@ -89,12 +94,35 @@ class IpAddressWidetProvider : AppWidgetProvider() {
                 val wifiManager = context.applicationContext
                     .getSystemService(WIFI_SERVICE) as WifiManager
 
-                val iNetIp = Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
+                val iNetIp = Formatter
+                    .formatIpAddress(wifiManager.connectionInfo.ipAddress).toString()
 
                 views.setTextViewText(R.id.tvIpAddress, "IP: $iNetIp")
                 appWidgetManger.updateAppWidget(componentName, views)
-            }
 
+                val appPrefs = AppPrefrence(context)
+
+                if(appPrefs.lastIpAddress != iNetIp)
+                withContext(Dispatchers.Main)
+                {
+                    appPrefs.lastIpAddress = iNetIp
+                    Toast.makeText(WeakReference(context).get(),
+                        "Fetched IP Successfully",
+                        Toast.LENGTH_SHORT).show()
+                }
+//                val sendIntent = Intent()
+//
+//                sendIntent.apply {
+//                    action = Intent.ACTION_PROCESS_TEXT
+//                    putExtra(Intent.EXTRA_PROCESS_TEXT, iNetIp)
+//                    addCategory("android.intent.category.DEFAULT")
+//                    type = "text/plain"
+//                }
+//
+//                val shareIntent = Intent.createChooser(sendIntent, null)
+//                shareIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//                context.startActivity(shareIntent)
+            }
         }
     }
 }

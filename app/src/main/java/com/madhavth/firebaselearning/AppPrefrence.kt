@@ -28,4 +28,11 @@ class AppPrefrence(context: Context) {
     {
         editor.putString(KEY_NEPAL_STATS, value).apply()
     }
+
+
+    var lastIpAddress: String
+    get() = preferences.getString("ip_address","connect to the internet") ?: "connect to the internet"
+    set(value) {
+        editor.putString("ip_address", value).apply()
+    }
 }

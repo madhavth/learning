@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.madhavth.firebaselearning.Fragments.YoutubeFragment
 import kotlinx.android.synthetic.main.activity_anim.*
 
 class AnimActivity : AppCompatActivity() {
@@ -20,5 +23,6 @@ class AnimActivity : AppCompatActivity() {
             val intent = Intent(this, TransparentActivity::class.java)
             startActivity(intent)
         }
+
     }
 }

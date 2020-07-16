@@ -107,7 +107,8 @@
         <activity android:name=".GesturesActivity" />
         <activity android:name=".ImageSearchResultActivity" />
         <activity android:name=".CanvasActivity" />
-        <activity android:name=".TicTacActivity" /> <!-- <receiver android:name=".NewAppWidget"> -->
+        <activity android:name=".TicTacActivity" >
+        </activity><!-- <receiver android:name=".NewAppWidget"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
         <!-- <action android:name="action_MY_NEW_ACTION" /> -->

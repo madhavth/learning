@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition
+        app:constraintSetEnd="@id/end_img_constraints"
+        app:constraintSetStart="@id/start_img_constraints"
+        app:duration="1000">
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotation="360"
+                app:framePosition="100"
+                app:motionTarget="@id/imgViewMotionLayout1" />
+        </KeyFrameSet>
+        <OnSwipe app:dragDirection="dragDown"
+            app:touchRegionId="@id/imgViewMotionLayout1"
+            />
+    </Transition>
+    <ConstraintSet android:id="@+id/start_img_constraints">
+        <Constraint
+            android:id="@+id/imgViewMotionLayout1"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+        </Constraint>
+
+        <Constraint
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:id="@+id/myBackgroundView"
+            >
+            <CustomAttribute
+                app:attributeName="backgroundColor"
+                app:customColorValue="#000000"/>
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/end_img_constraints">
+        <Constraint
+            android:id="@+id/imgViewMotionLayout1"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="1" />
+        </Constraint>
+
+        <Constraint
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/myBackgroundView">
+            <CustomAttribute app:attributeName="backgroundColor"
+                app:customColorValue="#000000"
+                />
+
+        </Constraint>
+    </ConstraintSet>
+
+
+    <!--This is for clicking the plates-->
+
+<!--    <ConstraintSet-->
+<!--        android:id="@+id/start_img_click"-->
+<!--        >-->
+<!--        <Constraint-->
+<!--            android:id="@+id/imgViewMotionLayout1"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:flow_verticalBias="0.1"-->
+<!--            >-->
+<!--        </Constraint>-->
+<!--    </ConstraintSet>-->
+
+<!--    <ConstraintSet-->
+<!--        android:id="@+id/end_img_click"-->
+<!--        >-->
+<!--        <Constraint-->
+<!--            android:id="@+id/imgViewMotionLayout1"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:flow_verticalBias="0.9"-->
+<!--            >-->
+
+<!--        </Constraint>-->
+<!--    </ConstraintSet>-->
+
+<!--    <Transition-->
+<!--        app:constraintSetStart="@id/start_img_click"-->
+<!--        app:constraintSetEnd="@id/end_img_click"-->
+<!--        >-->
+<!--        <OnClick-->
+<!--            app:targetId="@id/imgViewMotionLayout1"-->
+<!--            app:clickAction="toggle"-->
+<!--            />-->
+<!--    </Transition>-->
+</MotionScene>
