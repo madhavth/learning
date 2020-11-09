@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="" />
+        <option name="name" value="app" />
+        <option name="packageNamePattern" value="com.madhavth.firebaselearning" />
+        <option name="pid" value="" />
+      </filter>
+    </filters>
+  </component>
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ed50411d-79a4-486b-8ce2-ab8a64073d16" name="Default Changelist" comment="a">
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/madhavth/firebaselearning/ExpressoTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/madhavth/firebaselearning/MyViewModelTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/madhavth/firebaselearning/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/madhavth/firebaselearning/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/madhavth/firebaselearning/MyViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/madhavth/firebaselearning/MyViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/madhavth/firebaselearning/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/madhavth/firebaselearning/ExampleUnitTest.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_R" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FirebaseLearning" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FirebaseLearning" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="FirebaseLearning" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="valueResourceFile" />
+        <option value="RecyclerView ListAdapter" />
+        <option value="ApiService" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
+        <option value="JUnit4 Test Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YHJxTl6ybuh30Q8Tg0WclrZs4v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_g965u-4744335a5a333098" />
+    <property name="DEBUGGABLE_PROCESS" value="com.prologic.firebaselearning" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="4744335a5a333098" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-03-27T13:14:29.614Z" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="com.madhavth.firebaselearning.MyViewModel" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="com.madhavth.firebaselearning.MyViewModel" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/test/java/com/madhavth/firebaselearning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="project.structure.last.edited" value="Dependencies" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.madhavth.firebaselearning" />
+      <recent name="com.madhavth.firebaselearning.service" />
+      <recent name="com.madhavth.firebaselearning.Widgets" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.madhavth.firebaselearning" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="com.madhavth.firebaselearning" />
+      <recent name="com.prologic.firebaselearning" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="com.madhavth.firebaselearning.MyViewModel" />
+      <recent name="groovy.util.GroovyTestCase" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Android_Project\FirebaseLearning\app\src\main\res\drawable-v24" />
+      <recent name="C:\Android_Project\FirebaseLearning\app\src\main\res\drawable" />
+      <recent name="C:\Android_Project\FirebaseLearning\app\src\main\res\layout" />
+      <recent name="C:\Android_Project\FirebaseLearning\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Android_Project\FirebaseLearning\app\src\main\res\drawable" />
+      <recent name="C:\Android_Project\FirebaseLearning\app\src\main\java\com\madhavth\firebaselearning" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="cmd" />
+      <command value="terminal" />
+      <command value="wsl" />
+      <command value="notepad" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android Instrumented Tests.pressButton()">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration name="ExampleUnitTest.addition_isCorrect" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.madhavth.firebaselearning.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.madhavth.firebaselearning" />
+      <option name="MAIN_CLASS_NAME" value="com.madhavth.firebaselearning.ExampleUnitTest" />
+      <option name="METHOD_NAME" value="addition_isCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyViewModelTest.testingSomethings1" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.madhavth.firebaselearning.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.madhavth.firebaselearning" />
+      <option name="MAIN_CLASS_NAME" value="com.madhavth.firebaselearning.MyViewModelTest" />
+      <option name="METHOD_NAME" value="testingSomethings1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pressButton()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="METHOD_NAME" value="pressButton" />
+      <option name="CLASS_NAME" value="com.madhavth.firebaselearning.ExpressoTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyViewModelTest.getDataFromApi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.madhavth.firebaselearning.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.madhavth.firebaselearning" />
+      <option name="MAIN_CLASS_NAME" value="com.madhavth.firebaselearning.MyViewModelTest" />
+      <option name="METHOD_NAME" value="getDataFromApi" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyViewModelTest.readSettingsFromFakeContext" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.madhavth.firebaselearning.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.madhavth.firebaselearning" />
+      <option name="MAIN_CLASS_NAME" value="com.madhavth.firebaselearning.MyViewModelTest" />
+      <option name="METHOD_NAME" value="readSettingsFromFakeContext" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android Instrumented Tests.pressButton()" />
+        <item itemvalue="JUnit.MyViewModelTest.getDataFromApi" />
+        <item itemvalue="JUnit.MyViewModelTest.readSettingsFromFakeContext" />
+        <item itemvalue="Android JUnit.MyViewModelTest.testingSomethings1" />
+        <item itemvalue="Android JUnit.ExampleUnitTest.addition_isCorrect" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed50411d-79a4-486b-8ce2-ab8a64073d16" name="Default Changelist" comment="" />
+      <created>1580434620244</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580434620244</updated>
+    </task>
+    <task id="LOCAL-00001" summary="testing transitions, animations ,etc">
+      <created>1580982703270</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580982703271</updated>
+    </task>
+    <task id="LOCAL-00002" summary="changed interpolator">
+      <created>1580983232969</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580983232969</updated>
+    </task>
+    <task id="LOCAL-00003" summary="deleted anims">
+      <created>1580984077604</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580984077605</updated>
+    </task>
+    <task id="LOCAL-00004" summary="checkpoint">
+      <created>1582195100684</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1582195100684</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added service">
+      <created>1582535729438</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1582535729438</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added repeating service">
+      <created>1582538580849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582538580850</updated>
+    </task>
+    <task id="LOCAL-00007" summary="starting lockscreen">
+      <created>1583208754303</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1583208754303</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added canvas">
+      <created>1583314054104</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583314054104</updated>
+    </task>
+    <task id="LOCAL-00009" summary="canvas working">
+      <created>1583479889511</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1583479889511</updated>
+    </task>
+    <task id="LOCAL-00010" summary="overlay screen working">
+      <created>1583480579313</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1583480579313</updated>
+    </task>
+    <task id="LOCAL-00011" summary="working scrollable gesture">
+      <created>1583486591754</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1583486591754</updated>
+    </task>
+    <task id="LOCAL-00012" summary="widget, overlay service">
+      <created>1583898682327</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1583898682327</updated>
+    </task>
+    <task id="LOCAL-00013" summary="learning motionlayout now">
+      <created>1583926200668</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1583926200668</updated>
+    </task>
+    <task id="LOCAL-00014" summary="motionlayout1 added">
+      <created>1584005434446</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1584005434446</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added corona virus widget">
+      <created>1584180108386</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1584180108386</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added widget for showcasing nepal cases">
+      <created>1584186855311</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1584186855311</updated>
+    </task>
+    <task id="LOCAL-00017" summary="updated corona widget">
+      <created>1584193211873</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1584193211873</updated>
+    </task>
+    <task id="LOCAL-00018" summary="implemented tictac activity">
+      <created>1584365585581</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1584365585582</updated>
+    </task>
+    <task id="LOCAL-00019" summary="working winning paint">
+      <created>1584375570924</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1584375570924</updated>
+    </task>
+    <task id="LOCAL-00020" summary="paintText changed for winning">
+      <created>1584375705808</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1584375705808</updated>
+    </task>
+    <task id="LOCAL-00021" summary="align text">
+      <created>1584377056138</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1584377056138</updated>
+    </task>
+    <task id="LOCAL-00022" summary="adding listener to text">
+      <created>1584378694252</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1584378694252</updated>
+    </task>
+    <task id="LOCAL-00023" summary="added score">
+      <created>1584379289299</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1584379289299</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added snackbar">
+      <created>1584379373243</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1584379373244</updated>
+    </task>
+    <task id="LOCAL-00025" summary="implementing bot // todo">
+      <created>1584420113962</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1584420113962</updated>
+    </task>
+    <task id="LOCAL-00026" summary="transparent style">
+      <created>1585227527547</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1585227527547</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changed interpolator" />
+    <MESSAGE value="deleted anims" />
+    <MESSAGE value="checkpoint" />
+    <MESSAGE value="added service" />
+    <MESSAGE value="added repeating service" />
+    <MESSAGE value="starting lockscreen" />
+    <MESSAGE value="added canvas" />
+    <MESSAGE value="canvas working" />
+    <MESSAGE value="overlay screen working" />
+    <MESSAGE value="working scrollable gesture" />
+    <MESSAGE value="widget, overlay service" />
+    <MESSAGE value="learning motionlayout now" />
+    <MESSAGE value="motionlayout1 added" />
+    <MESSAGE value="added corona virus widget" />
+    <MESSAGE value="added widget for showcasing nepal cases" />
+    <MESSAGE value="updated corona widget" />
+    <MESSAGE value="implemented tictac activity" />
+    <MESSAGE value="working winning paint" />
+    <MESSAGE value="paintText changed for winning" />
+    <MESSAGE value="align text" />
+    <MESSAGE value="adding listener to text" />
+    <MESSAGE value="added score" />
+    <MESSAGE value="added snackbar" />
+    <MESSAGE value="implementing bot // todo" />
+    <MESSAGE value="transparent style" />
+    <option name="LAST_COMMIT_MESSAGE" value="transparent style" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="703" y="239" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594880332253">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="703" y="239" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1594880332253" />
+    <state x="627" y="225" key="AndroidCreateXmlResourceDialog" timestamp="1594881021320">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="627" y="225" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1594881021320" />
+    <state width="421" height="466" key="DebuggerActiveHint" timestamp="1594881940226">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="421" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1594881940226" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1594268047582">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594268047582" />
+    <state width="1491" height="254" key="GridCell.Tab.0.bottom" timestamp="1594885011054">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="254" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594885011054" />
+    <state width="1491" height="254" key="GridCell.Tab.0.center" timestamp="1594885011054">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="254" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594885011054" />
+    <state width="1491" height="254" key="GridCell.Tab.0.left" timestamp="1594885011054">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="254" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594885011054" />
+    <state width="1491" height="254" key="GridCell.Tab.0.right" timestamp="1594885011054">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="254" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594885011054" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1594880413851">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1594880413851" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588071348875">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588071348875" />
+    <state x="463" y="144" width="609" height="536" key="find.popup" timestamp="1594884678776">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="144" width="609" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1594884678776" />
+    <state x="540" y="115" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1594880413861">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="540" y="115" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1594880413861" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1594882490336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1594882490336" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594884125694">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594884125694" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

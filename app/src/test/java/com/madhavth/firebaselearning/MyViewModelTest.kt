@@ -44,23 +44,6 @@ class MyViewModelTest {
     @Mock
     private lateinit var fakeHttpClient: OkHttpClient
 
-    @Test
-    fun getDataFromApi(): Unit = runBlocking {
-
-
-        val realHttpClient = OkHttpClient()
-        val request = Request.Builder().url("https://www.google.com/").build()
-
-
-        val response = fakeHttpClient.newCall(request).execute()
-
-        println(response.body())
-
-        assert(response.isSuccessful)
-    }
-
-
-
 }
 
 class EmailValidator {
