@@ -17,7 +17,8 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 
-private const val BASE_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
+//private const val BASE_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
+private const val BASE_URL = "https://ifconfig.me/"
 
 interface CoronaApiService {
     //@GET("gdg-directory.json")
@@ -36,6 +37,8 @@ interface CoronaApiService {
     fun getTotalWorldCases(): Deferred<WorldCases>
 
 
+    @GET("ip")
+    fun getPublicIp(): Deferred<String>
 }
 
 private val moshi = Moshi.Builder()
@@ -47,15 +50,15 @@ val myCache = Cache(Environment.getDownloadCacheDirectory(), cacheSize)
 
 val okHttpClient = OkHttpClient.Builder()
     .cache(myCache).build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addConverterFactory(ScalarsConverterFactory.create())
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .client(okHttpClient)
-    .baseUrl(BASE_URL)
-    .build()
-
-object TestApi {
-    val retrofitService: CoronaApiService by lazy { retrofit.create(CoronaApiService::class.java) }
-}
+//
+//private val retrofit = Retrofit.Builder()
+//    .addConverterFactory(MoshiConverterFactory.create(moshi))
+//    .addConverterFactory(ScalarsConverterFactory.create())
+//    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//    .client(okHttpClient)
+//    .baseUrl(BASE_URL)
+//    .build()
+//
+//object TestApi {
+//    val retrofitService: CoronaApiService by lazy { retrofit.create(CoronaApiService::class.java) }
+//}

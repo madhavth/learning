@@ -1,5 +1,6 @@
 package com.madhavth.firebaselearning.Widgets
 
+import androidx.annotation.IntegerRes
 import okhttp3.*
 
 
@@ -18,9 +19,15 @@ val IMAGE_SEARCH = "https://images.google.com/searchbyimage?image_url="
 val DEFAULT_IMAGE_LINK = "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg"
 
 val INTENT_EXTRA_IMAGE = "MyBitmapExtra"
-val JSOUP_ADDRESS = "https://www.journaldev.com/23448/android-web-scraping-with-retrofit"
+const val JSOUP_ADDRESS = "https://www.journaldev.com/23448/android-web-scraping-with-retrofit"
 
 val DRAW_OVER_OTHER_APPS = 1111
+
+val LOCAL_IP = 0
+val INTERNET_IP = 1
+
+val IP_MODES = arrayOf(LOCAL_IP, INTERNET_IP)
+
 
 fun uploadImage()
 {

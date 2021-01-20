@@ -12,7 +12,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.Toast
-import com.madhavth.firebaselearning.service.retorift.TestApi
 import kotlinx.coroutines.*
 import timber.log.Timber
 import java.io.ByteArrayOutputStream
@@ -48,95 +47,6 @@ class CoronaUpdateProvider : AppWidgetProvider() {
     }
 
 
-    suspend fun getCoronaUpdate(): ByteArray?
-    {
-        return withContext(Dispatchers.IO) {
-            try{
-                val coronaUpdate = TestApi.retrofitService.getUpdates().await()
-                val coronaImage = coronaUpdate.bytes()
-                return@withContext coronaImage
-            }
-            catch(e: Exception)
-            {
-                return@withContext null
-            }
-        }
-    }
-
-    suspend fun getNepalCases(): String
-    {
-
-        return withContext(Dispatchers.IO)
-        {
-            try {
-                val allCases = com.madhavth.firebaselearning
-                    .service.retorift.TestApi.retrofitService.getCasesByCountry().await().string()
-
-                val nepalIndex = allCases.indexOf("\"country_name\":\"Nepal\"")
-
-                val nepalCases = allCases.substring(nepalIndex, nepalIndex+200)
-                val nepalSubString = nepalCases.split("\"").filter{
-
-                    when(it)
-                    {
-                        "," -> return@filter false
-                        ":" -> return@filter false
-                        else -> return@filter true
-                    }
-                }
-
-                //Timber.d("nepal cases are $nepalCases")
-                Timber.d("nepal subStrings are $nepalSubString")
-
-                nepalSubString.forEach{ sub ->
-                    Timber.d("string is $sub")
-                }
-
-                val cases4 = nepalSubString[4]
-                val death6 = nepalSubString[6]
-                val totalRecovered10= nepalSubString[10]
-                val newDeaths12 = nepalSubString[12]
-                val newCases14 = nepalSubString[14]
-                val seriousCritical16 = nepalSubString[16]
-
-                Timber.d("Nepal cases - $cases4, deaths - $death6, total recovered: $totalRecovered10\n" +
-                        "new deaths - $newDeaths12, new cases - $newCases14, serious critcal - $seriousCritical16")
-
-                val cases = "Nepal cases - $cases4, deaths - $death6, total recovered: $totalRecovered10\n" +
-                        "new deaths - $newDeaths12, new cases - $newCases14, serious critcal - $seriousCritical16"
-
-                appPrefrence.nepalStats = cases
-
-                return@withContext cases
-            }
-            catch (e: Exception) {
-                Timber.d("cases error due to ${e.message}")
-                return@withContext appPrefrence.nepalStats
-            }
-        }
-    }
-
-
-    suspend fun getWorldStats(): String
-    {
-        return withContext(Dispatchers.IO)
-        {
-            try{
-                var result = TestApi.retrofitService.getTotalWorldCases().await()
-
-                var worldStats = "World total cases : ${result.totalCases}, deaths: ${result.totalDeaths}, recovered: ${result.totalRecovered}\n" +
-                        "new cases: ${result.newCases}, deaths: ${result.newDeaths}, statistics taken at: ${result.statisticTakenAt}"
-
-                appPrefrence.worldStats = worldStats
-                return@withContext worldStats
-            }
-            catch (e: Exception)
-            {
-                return@withContext appPrefrence.worldStats
-            }
-        }
-    }
-
     private lateinit var appPrefrence: AppPrefrence
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -152,9 +62,7 @@ class CoronaUpdateProvider : AppWidgetProvider() {
                 CoroutineScope(Dispatchers.IO).launch {
                     views.setTextViewText(R.id.tvNepalUpdates, "fetching..")
                     appWidgetManager.updateAppWidget(componentName, views)
-                    val updatedText = getNepalCases()
 
-                    views.setTextViewText(R.id.tvNepalUpdates, updatedText)
                     appWidgetManager.updateAppWidget(componentName,views)
                 }
             }
@@ -170,34 +78,9 @@ class CoronaUpdateProvider : AppWidgetProvider() {
                 views.setTextViewText(R.id.tvWorldTotalCases, "updating world stats..")
                 appWidgetManager.updateAppWidget(componentName, views)
 
-                val updatedWorldStats = getWorldStats()
-                views.setTextViewText(R.id.tvWorldTotalCases, updatedWorldStats)
                 appWidgetManager.updateAppWidget(componentName, views)
             }
         }
-
-        else if(intent?.action == UPDATE_MASK_TIPS)
-        {
-            CoroutineScope(Dispatchers.IO).launch {
-                views.setImageViewResource(R.id.imgViewCoronaUpdate, R.drawable.images)
-                appWidgetManager.updateAppWidget(componentName, views)
-
-                val bitmap = getCoronaUpdate()
-                if(bitmap == null)
-                {
-                    views.setImageViewResource(R.id.imgViewCoronaUpdate, R.mipmap.corona_foreground)
-                }
-                else
-                {
-                    val bitmapOptions = BitmapFactory.Options()
-                    val newbitmap = BitmapFactory.decodeByteArray(bitmap,0, bitmap.size,bitmapOptions)
-                    views.setImageViewBitmap(R.id.imgViewCoronaUpdate, newbitmap)
-                }
-                appWidgetManager.updateAppWidget(componentName,views)
-            }
-        }
-
-
 
     }
 
@@ -234,28 +117,5 @@ class CoronaUpdateProvider : AppWidgetProvider() {
         views.setOnClickPendingIntent(R.id.tvNepalUpdates,pendingIntent)
         views.setOnClickPendingIntent(R.id.tvWorldTotalCases, pendingIntent2)
         views.setOnClickPendingIntent(R.id.imgViewCoronaUpdate, pendingIntent3)
-
-        CoroutineScope(Dispatchers.Main).launch {
-            val txtNepalUpdate = getNepalCases()
-            val txtWorldStats = getWorldStats()
-            val myImage = getCoronaUpdate()
-
-            views.setViewVisibility(R.id.progressLoadingCoronaUpdate, View.GONE )
-            val bitmapOptions = BitmapFactory.Options()
-            if(myImage!= null)
-            {
-                val bitmap = BitmapFactory.decodeByteArray(myImage,0, myImage.size, bitmapOptions)
-                views.setImageViewBitmap(R.id.imgViewCoronaUpdate,bitmap)
-            }
-            else
-            {
-                views.setImageViewResource(R.id.imgViewCoronaUpdate, R.drawable.coronavirusstaysafe)
-            }
-
-            views.setTextViewText(R.id.tvWorldTotalCases, txtWorldStats)
-            views.setTextViewText(R.id.tvNepalUpdates, txtNepalUpdate)
-            // Instruct the widget manager to update the widget
-            appWidgetManager.updateAppWidget(appWidgetId, views)
-        }
     }
 }
