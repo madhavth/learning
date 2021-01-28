@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Context.WIFI_SERVICE
 import android.content.Intent
 import android.net.wifi.WifiManager
+import android.os.Bundle
 import android.text.format.Formatter
 import android.widget.RemoteViews
 import android.widget.Toast
@@ -46,6 +47,14 @@ class IpAddressWidetProvider : AppWidgetProvider() {
         // Enter relevant functionality for when the last widget is disabled
     }
 
+    override fun onAppWidgetOptionsChanged(
+        context: Context?,
+        appWidgetManager: AppWidgetManager?,
+        appWidgetId: Int,
+        newOptions: Bundle?
+    ) {
+        super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
+    }
 
     private fun updateAppWidget(
         context: Context,
